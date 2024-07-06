@@ -1,0 +1,98 @@
+{% extends './navbaretud.html' %}
+
+{% block content %}
+<html>
+    <head>
+        <style>
+            /* CSS styles for table */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-family: Arial, sans-serif;
+                margin-bottom: 20px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f9f9f9;
+                font-weight: bold;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            /* Additional CSS styles and effects */
+            body {
+                margin: 20px;
+                background-color: #f1f1f1;
+            }
+            form {
+                margin-bottom: 20px;
+            }
+            .btn {
+                padding: 10px 16px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                margin: 4px 2px;
+                cursor: pointer;
+                transition-duration: 0.4s;
+                border-radius: 4px;
+            }
+            .btn:hover {
+                background-color: #45a049;
+            }
+            .form-title {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 14px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <style>
+        .form-title1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 34px;
+            font-weight: bold;
+        }
+    </style>
+    <div style="margin-bottom: 100px;"></div>
+        <h2 class="form-title1">Abcences</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Numero</th>
+                    <th>Excuse</th>
+                    <th>Cours</th>
+                    <th>Date</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in x %}
+                <tr>
+                    <td>{{ i.num_abs }}</td>
+                    <td>{{ i.execuse }}</td>
+                    <td>{{ i.cours.nom }}</td>
+                    <td>{{ i.date }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="margin-bottom: 400px;"></div>
+    </body>
+</html>
+{% endblock content %}

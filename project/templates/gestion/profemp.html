@@ -1,0 +1,95 @@
+{% extends './navbarprof.html' %}
+
+{% block content %}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 20px;
+    }
+    
+    th {
+        background-color: #f9f9f9;
+        font-weight: bold;
+    }
+    
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+<style>
+    .form-title1 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 34px;
+        font-weight: bold;
+    }
+</style>
+<div style="margin-bottom: 100px;"></div>
+<h2 class="form-title1">Emploi du temps</h2>
+<div style="margin-bottom: 50px;"></div>
+<table>
+    <tr>
+        <th></th>
+        <th>Heure 1</th>
+        <th>Heure 2</th>
+    </tr>
+    <tr>
+        <td>Lundi</td>
+        <td>
+        {% for i in e %}
+        {% if i.prof1 == p %}
+        {{ i.cours1 }} classe {{i.num_classe.num_classe}}
+        {% endif %}
+        {% endfor %}</td>
+        <td>
+        {% for i in e %}
+        {% if i.prof2 == p %}
+        {{ i.cours2 }} classe {{i.num_classe.num_classe}}
+        {% endif %}
+        {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>Mardi</td>
+        <td>
+        {% for i in e %}
+        {% if i.prof3 == p %}
+        {{ i.cours3 }} classe {{i.num_classe.num_classe}}
+        {% endif %}
+        {% endfor %}
+        </td>
+        <td>
+        {% for i in e %}
+        {% if i.prof4 == p %}
+        {{ i.cours4 }} classe {{i.num_classe.num_classe}}
+        {% endif %}
+        {% endfor %}
+    </td>
+    </tr>
+    <tr>
+        <td>Mercredi</td>
+        <td>
+        {% for i in e %}
+        {% if i.prof5 == p %}
+        {{ i.cours5 }} classe {{i.num_classe.num_classe}}
+        {% endif %}
+        {% endfor %}
+    </td>
+        {% for i in e %}
+        {% if i.prof6 == p %}
+        <td>{{ i.cours6 }} classe {{i.num_classe.num_classe}}</td>
+        {% endif %}
+        {% endfor %} 
+    </tr>
+</table>
+<div style="margin-bottom: 400px;"></div>
+{% endblock content %}

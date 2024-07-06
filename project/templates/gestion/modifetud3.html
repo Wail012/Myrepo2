@@ -1,0 +1,143 @@
+{% extends './navbaradmin.html' %}
+{% load static %}
+
+{% block content %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .radio-label {
+            margin-left: 10px;
+        }
+
+        .btn-save {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .message {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">Modifier l'étudiant</h2>
+            <form method="POST" >
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="CNE">CNE:</label>
+                    <input type="number" name="CNE" value="{{ et.CNE }}" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nom">Nom:</label>
+                    <input type="text" name="nom" value="{{ et.nom }}" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="prenom">Prénom:</label>
+                    <input type="text" name="prenom" value="{{ et.prenom }}" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="sexe">Sexe:</label>
+                    <select name="sexe" class="form-control">
+                        <option value="homme" {% if et.sexe == 'homme' %}selected{% endif %}>Homme</option>
+                        <option value="femme" {% if et.sexe == 'femme' %}selected{% endif %}>Femme</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tel">Téléphone:</label>
+                    <input type="tel" name="tel" value="{{ et.tel }}" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" value="{{ et.email }}" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="adresse">Adresse:</label>
+                    <input type="text" name="adresse" value="{{ et.adresse }}" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="anneebac">Année du Bac:</label>
+                    <input type="number" name="anneebac" value="{{ et.anneebac }}" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="option1">Option 1:</label>
+                    <select name="option1" class="form-control">
+                        <!-- Populate options dynamically based on your "option" model -->
+                        {% for options in option %}
+                            <option value="{{ options.nom }}" {% if options.nom == et.option1.nom %}selected{% endif %}>{{ options.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="classe">Classe:</label>
+                    <select name="classe" class="form-control">
+                        <!-- Populate options dynamically based on your "classe" model -->
+                        {% for classes in classe %}
+                            <option value="{{ classes.num_classe }}" {% if classes.num_classe == et.classe.num_classe %}selected{% endif %}>{{ classes.num_classe }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="parcours">Parcours:</label>
+                    <select name="parcours" class="form-control">
+                        <option value="Bac+2" {% if et.parcours == 'Bac+2' %}selected{% endif %}>Bac+2</option>
+                        <option value="Bac+3" {% if et.parcours == 'Bac+3' %}selected{% endif %}>Bac+3</option>
+                        <option value="Bac+4" {% if et.parcours == 'Bac+4' %}selected{% endif %}>Bac+4</option>
+                        <option value="Bac+5" {% if et.parcours == 'Bac+5' %}selected{% endif %}>Bac+5</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary btn-save" type="submit">Modifier</button>
+            </form>
+            
+            {% if x == 1 %}
+                <div class="message alert alert-success">
+                    Modification enregistrée.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

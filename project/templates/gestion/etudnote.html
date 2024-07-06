@@ -1,0 +1,124 @@
+{% extends './navbaretud.html' %}
+
+{% block content %}
+{% load django_template_maths %}
+<html>
+    <head>
+        <style>
+            /* CSS styles for table */
+            table {
+                width: 60%;
+                border-collapse: collapse;
+                font-family: Arial, sans-serif;
+                margin-bottom: 20px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f9f9f9;
+                font-weight: bold;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            /* Additional CSS styles and effects */
+            body {
+                margin: 20px;
+                background-color: #f1f1f1;
+            }
+            form {
+                margin-bottom: 20px;
+            }
+            .btn {
+                padding: 10px 16px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                margin: 4px 2px;
+                cursor: pointer;
+                transition-duration: 0.4s;
+                border-radius: 4px;
+            }
+            .btn:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        
+        
+<form method="POST" action="{% url 'noteprof2' %}">
+    {% csrf_token %}
+        
+           
+                
+                    {% for i in m %}
+                    <table>
+                        <tr>
+                            <td>
+                                Module: 
+                                         </td>
+                            <td>
+                   {{i.nom}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>cours</th>
+                            <th>note</th>
+                            <th>validation</th>
+                            
+                        </tr>
+                    {% for j in p1 %}
+                    {% if j.num_cours.module == i %}
+                    {% for k in p2 %}
+                    {% if k.num_cours == j.num_cours %}
+                    {% for p in p3 %}
+                    {% if p.num_cours == j.num_cours %}
+                    <tr>
+                        <td>{{j.num_cours.nom}}</td>
+                    <td>{{j.note|add:k.note|add:p.note|div:3 }}</td>
+                    {% if j.note|add:k.note|add:p.note|div:3 < 10 %}
+                    <td>non valide</td>
+                    {% else %}
+                    <td>valide</td>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    
+                    
+
+                    
+                    {% endfor %}
+
+                
+                    </td>
+                </tr>
+                <td>
+                   
+
+            </table>
+                {% endfor %}
+               
+            
+            
+            <tbody>
+                
+            </tbody>
+        
+        
+    </form>
+    </body>
+</html>
+{% endblock content %}

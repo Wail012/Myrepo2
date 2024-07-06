@@ -1,0 +1,81 @@
+{% extends './navbarsubs.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EMSI</title>
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .radio-label {
+            margin-left: 10px;
+        }
+
+        .btn-save {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .message {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            font-family: Arial;
+        }
+      
+        .welcome-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+      
+        .welcome-message {
+            font-size: 52px;
+            
+            color: #333333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      </style>
+       <div class="welcome-container">
+        <div class="welcome-message">
+            Bonjour  {{e.prenom1}} {{e.nom1}}
+        </div>
+      </div>
+</body>
+</html>
+{% endblock content %}

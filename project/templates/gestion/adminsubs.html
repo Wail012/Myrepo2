@@ -1,0 +1,100 @@
+{% extends './navbaradmin.html' %}
+
+{% block content %}
+<html>
+    <head>
+        <style>
+            /* CSS styles for table */
+            table {
+                width: 60%;
+                border-collapse: collapse;
+                font-family: Arial, sans-serif;
+                margin-bottom: 20px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                margin: 0 auto;
+            }
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f9f9f9;
+                font-weight: bold;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            /* Additional CSS styles and effects */
+            body {
+                margin: 20px;
+                background-color: #f1f1f1;
+            }
+            form {
+                margin-bottom: 20px;
+            }
+            .btn {
+                padding: 10px 16px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                margin: 4px 2px;
+                cursor: pointer;
+                transition-duration: 0.4s;
+                border-radius: 4px;
+            }
+            .btn:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="margin-bottom: 60px;"></div>
+        <tab>      <h2 class="form-title">                     Subscriptions</h2>
+            <style>
+                .form-title{
+                    text-align: center;
+                }
+            </style>
+        <div style="margin-bottom: 60px;"></div>
+<form method="POST" >
+    {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>CNE</th>
+                    <th>nom</th>
+                    <th>prenom</th>
+                    
+                    
+                    
+                    {% for i in subs %}
+                <tr>
+                    <td>{{ i.CNE1 }}</td>
+                    <td>{{ i.nom1 }}</td>
+                    <td>{{ i.prenom1 }}</td>
+                    <td> <a href="{% url 'voirsubs' i.CNE1 %}" class="btn btn-warning">voir plus</a></td>
+                    
+
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+               
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+      
+    </form>
+    <div style="margin-bottom: 400px;"></div>
+    </body>
+</html>
+{% endblock content %}

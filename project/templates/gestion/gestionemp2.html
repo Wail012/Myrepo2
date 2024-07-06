@@ -1,0 +1,179 @@
+{% extends './navbaradmin.html' %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <table class="schedule-table">
+        <tr>
+            <th></th>
+            <th>heure1</th>
+            <th>heure2</th>
+        </tr>
+        <tr>
+            <td>lundi</td>
+            <td>
+                <select name="cours1" id="cours1">
+                    {% for i in e %}
+                        {% for j in c %}
+                            {% if j.module == i %}
+                                <option value="{{j.nom}}">{{j.nom}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select name="cours2" id="cours2">
+                    {% for i in e %}
+                        {% for j in c %}
+                            {% if j.module == i %}
+                                <option value="{{j.nom}}">{{j.nom}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>mardi</td>
+            <td>
+                <select name="cours3" id="cours3">
+                    {% for i in e %}
+                        {% for j in c %}
+                            {% if j.module == i %}
+                                <option value="{{j.nom}}">{{j.nom}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select name="cours4" id="cours4">
+                    {% for i in e %}
+                        {% for j in c %}
+                            {% if j.module == i %}
+                                <option value="{{j.nom}}">{{j.nom}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>mercredi</td>
+            <td>
+                <select name="cours5" id="cours5">
+                    {% for i in e %}
+                        {% for j in c %}
+                            {% if j.module == i %}
+                                <option value="{{j.nom}}">{{j.nom}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select name="cours6" id="cours6">
+                    {% for i in e %}
+                        {% for j in c %}
+                            {% if j.module == i %}
+                                <option value="{{j.nom}}">{{j.nom}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <button type="submit" class="btn-submit">Submit</button>
+</form>
+
+{% if x == 1 %}
+    <br>
+    <span class="error-message">Le prof est déjà pris.</span>
+{% endif %}
+
+{% if x == 3 %}
+    <br>
+    <span class="success-message">Emploi du temps mis à jour.</span>
+{% endif %}
+<style>
+    body {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .schedule-table th {
+        background-color: #f9f9f9;
+        font-weight: bold;
+    }
+
+    .schedule-table tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    select {
+        padding: 6px 10px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    .btn-submit {
+        padding: 10px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        border-radius: 4px;
+    }
+
+    .btn-submit:hover {
+        background-color: #45a049;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .success-message {
+        color: green;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+</style>
+
+    {% endblock content %}

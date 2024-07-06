@@ -1,0 +1,85 @@
+{% extends './navbaretud.html' %}
+{% block content %}
+{% comment %} <!DOCTYPE html>
+
+      <nav class="navbar navbar-default probootstrap-navbar">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="btn-more js-btn-more visible-xs">
+              <a href="#"><i class="icon-dots-three-vertical "></i></a>
+            </div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html" title="ProBootstrap:Enlight">Enlight</a>
+          </div>
+
+          <div id="navbar-collapse" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="{% url 'welcome1' %}">Home</a></li>
+              
+              <li><a href="{% url 'login' %}">Login</a></li>
+              <li><a href="{% url 'absetud' %}">Abscences</a></li>
+              <li><a href="{% url 'etudp' %}">donnees personellses</a></li>
+              <li><a href="{% url 'etudnote' %}">Notes</a></li>
+              <li> <a href="{% url 'etudemp' %}">emploi du temps</a></li>
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Pages</a>
+                <ul class="dropdown-menu">
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="courses.html">Courses</a></li>
+                  <li><a href="course-single.html">Course Single</a></li>
+                  <li><a href="gallery.html">Gallery</a></li>
+                  <li class="dropdown-submenu dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span>Sub Menu</span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Second Level Menu</a></li>
+                      <li><a href="#">Second Level Menu</a></li>
+                      <li><a href="#">Second Level Menu</a></li>
+                      <li><a href="#">Second Level Menu</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="news.html">News</a></li>
+                </ul>
+              </li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+       {% endcomment %}
+
+       <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            font-family: Arial;
+        }
+
+        .welcome-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+
+        .welcome-message {
+            font-size: 52px;
+            
+            color: #333333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+       <div class="welcome-container">
+        <div class="welcome-message">
+            Bonjour etudiant {{e.prenom}} {{e.nom}}
+        </div>
+    </div>
+
+
+{% endblock content %}

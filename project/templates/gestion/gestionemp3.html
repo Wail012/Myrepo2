@@ -1,0 +1,38 @@
+<form method="POST">
+    {% csrf_token %}
+<table>
+    <tr>
+        <td>
+        </td>
+        <td>heur1</td>
+        <td>heur2</td>
+    </tr>
+    <tr>
+        <td>
+            lundi
+        </td>
+        <td><select name="cours1" id="cours1">
+            {% for i in e %}
+            {% for j in c %}
+            {% if j.module == i %}
+            <option value="{{j.nom}}">{{j.nom}}</option>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </selct>
+    </td>
+    <td><select name="cours2" id="cours2">
+        {% for i in e %}
+        {% for j in c %}
+        {% if j.module == i %}
+        <option value="{{j.nom}}">{{j.nom}}</option>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </selct>
+</td>
+    </tr>
+        </table>
+        
+    <button type"submit" >submit</button>
+    </form>

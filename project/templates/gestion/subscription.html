@@ -1,0 +1,147 @@
+
+{% extends './navbarsubs1.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+    <meta charset="UTF-8">
+    <title>Add Student/Professor</title>
+    
+    <body>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-save {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .message {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+
+
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <h2 class="form-title">Subscription</h2>
+            <div class="form-group">
+                <label for="CNE1">CNE:</label>
+                <input type="number" name="CNE1" id="CNE1" required>
+            </div>
+            <div class="form-group">
+                <label for="nom1">Nom:</label>
+                <input type="text" name="nom1" id="nom1" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom1">Prénom:</label>
+                <input type="text" name="prenom1" id="prenom1" required>
+            </div>
+            <div class="form-group">
+                <label for="sexe1">Sexe:</label>
+                <select name="sexe1" id="sexe1" required>
+                    <option value="M">Masculin</option>
+                    <option value="F">Féminin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tel1">Téléphone:</label>
+                <input type="tel" name="tel1" id="tel1" required>
+            </div>
+            <div class="form-group">
+                <label for="email1">Email:</label>
+                <input type="email" name="email1" id="email1" required>
+            </div>
+            <div class="form-group">
+                <label for="adresse1">Adresse:</label>
+                <input type="text" name="adresse1" id="adresse1" required>
+            </div>
+            <div class="form-group">
+                <label for="anneebac1">Année du baccalauréat:</label>
+                <input type="number" name="anneebac1" id="anneebac1" required>
+            </div>
+            <div class="form-group">
+                <label for="option11">Option:</label>
+                <select name="option11" id="option11" required>
+                    {% for option in options %}
+                        <option value="{{ option.nom }}">{{option.nom}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="classe1">Classe:</label>
+                <select name="classe1" id="classe1" required>
+                    {% for classe in classes %}
+                        <option value="{{ classe.num_classe }}">{{ classe.num_classe }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Parcours:</label>
+                <select name="parcours1" id="parcours1" required>
+                    <option value="Bac+2">Bac+2</option>
+                    <option value="Bac+3">Bac+3</option>
+                    <option value="Bac+4">Bac+4</option>
+                    <option value="Bac+5">Bac+5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-save">Save</button>
+            </div>
+            {% if x == 1 %}
+                <p class="message">The student already exists.</p>
+            {% elif x == 2 %}
+                <p class="message">Request sent.</p>
+            {% endif %}
+        </form>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,162 @@
+{% extends './navbaradmin.html' %}
+
+{% block content %}
+<html>
+<head>
+    <style>
+        /* CSS styles for table */
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Additional CSS styles and effects */
+        body {
+            margin: 20px;
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            color: #333333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Styles for the page heading */
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Styles for the table */
+        .info-table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .info-table th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        /* Styles for form input field */
+        input[type="submit"] {
+            padding: 10px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Styles for error messages */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-bottom: 100px;"></div>
+    <h1>Class Management</h1>
+    <div style="margin-bottom: 50px;"></div>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in et %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Submit" class="btn">
+    </form>
+    <div style="margin-bottom: 100px;"></div>
+    <style>
+        /* CSS styles for the et form field */
+        .et-field {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+        
+
+    {% if y == 3 %}
+        <p class="error-message">This class already exists.</p>
+    {% endif %}
+
+    {% if y == 4 %}
+        <p class="success-message">Class added successfully.</p>
+    {% endif %}
+</body>
+</html>
+{% endblock content %}

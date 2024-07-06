@@ -1,0 +1,33 @@
+{% extends './navbaradmin.html' %}
+{% load static %}
+
+{% block content %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <form method="POST" class="my-form"  enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+            
+            <button class="btn btn-primary" type="submit">Modifier</button>
+        </form>
+        
+        {% if x == 1 %}
+            <div class="alert alert-success">
+                Modification enregistrée.
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,171 @@
+{% extends './navbaradmin.html' %}
+
+{% block content %}
+<html>
+    <head>
+        <style>
+            /* CSS styles for table */
+            table {
+                width: 60%;
+                border-collapse: collapse;
+                font-family: Arial, sans-serif;
+                margin-bottom: 20px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f9f9f9;
+                font-weight: bold;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            /* Additional CSS styles and effects */
+            body {
+                margin: 20px;
+                background-color: #f1f1f1;
+            }
+            form {
+                margin-bottom: 20px;
+            }
+            .btn {
+                padding: 10px 16px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                margin: 4px 2px;
+                cursor: pointer;
+                transition-duration: 0.4s;
+                border-radius: 4px;
+            }
+            .btn:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        
+    </head>
+    <body>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f5f5f5;
+                    padding: 20px;
+                }
+                
+                h1 {
+                    color: #333333;
+                    text-align: center; /* Center the heading */
+                }
+                
+                .info-table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    max-width: 500px;
+                    margin: 20px auto;
+                }
+                
+                .info-table th,
+                .info-table td {
+                    padding: 10px;
+                    text-align: left;
+                    border-bottom: 1px solid #dddddd;
+                }
+                
+                .info-table th {
+                    background-color: #f9f9f9;
+                    font-weight: bold;
+                }
+                
+                .info-table td {
+                    background-color: #ffffff;
+                }
+            </style>
+        </head>
+        <body>
+            
+            <h1>Données personnelles</h1>
+            <table class="info-table">
+                <tr>
+                    <th>CNE</th>
+                    <td>{{ p.CNE1 }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ p.nom1 }}</td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{ p.prenom1 }}</td>
+                </tr>
+                <tr>
+                    <tr>
+                        <th>tel</th>
+                        <td>{{ p.tel1}}</td>
+                    </tr>
+                    <tr>
+                    <th>Sexe</th>
+                    <td>{{ p.sexe1 }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ p.email1 }}</td>
+                </tr>
+                <tr>
+                    <th>adresse</th>
+                    <td>{{ p.adresse1 }}</td>
+                </tr>
+                <tr>
+                    <th>annee bac</th>
+                    <td>{{ p.anneebac1 }}</td>
+                </tr>
+                <tr>
+                    <th>option</th>
+                    <td>{{ p.option11.nom }}</td>
+                </tr>
+                <tr>
+                    <th>classe</th>
+                    <td>{{ p.classe1.num_classe }}</td>
+                </tr>
+                <tr>
+                    <th>parcours</th>
+                    <td>{{ p.parcours1 }}</td>
+                </tr>
+            </table>
+            <div class="btn-container">
+            <a href="{% url 'acceptersubs'  %}" class="btn btn-warning">accepter</a>
+            <a href="{% url 'refusersubs'  %}" class="btn btn-warning">refuser</a>
+            </div>
+            <style>
+                .btn {
+                    margin: 0;
+                    text-align: center;
+                }
+                .btn-container {
+                    text-align: center; /* Center the buttons horizontally */
+                }
+                
+            </style>
+        </body>
+        </html>
+        
+    </body>
+    </html>
+    
+</html>
+{% endblock content %}

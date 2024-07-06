@@ -1,0 +1,15 @@
+<html>
+   
+  {% extends './navbaretud.html' %}
+  
+  {% block content %}
+  <body>
+    {% for i in data %}
+    {{ i.CNE }}
+    {% endfor %}
+    C'est un etudiant
+    <button onclick="location.href='{% url 'afficherinfo' %}'">afficher info</button>
+  </body>
+  {% endblock content %}
+  
+</html>
